@@ -1,0 +1,625 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Hero Section & Background Image */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    /* REPLACE 'your-image-name.jpg' with the actual filename of your image */
+    background-image: url('header-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dark Overlay to make text readable */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Adjust the rgba opacity (0.6) if the image needs to be darker or lighter */
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 1;
+}
+
+/* Ensure content sits above the overlay */
+.navbar, .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 80px;
+    width: 100%;
+}
+
+/* Logo Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+}
+
+.logo-icon {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    transform: rotate(45deg);
+}
+
+.logo-icon span {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Nav Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover, .nav-links li a.active {
+    color: #e5b324; /* Yellow accent color */
+}
+
+.arrow {
+    font-size: 14px;
+    position: relative;
+    top: -2px;
+}
+
+/* --- Hero Content --- */
+.hero-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+    margin-top: -60px; /* Slight offset to balance visual weight */
+}
+
+.subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    color: #f1f1f1;
+}
+
+.main-title {
+    font-size: 75px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.description {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: #dedede;
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background-color: #f2b115; /* Matches the yellow in the image */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 18px 40px;
+    border-radius: 50px; /* Makes it pill-shaped */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #d99b0b;
+    transform: translateY(-2px);
+}
+
+/* --- Responsive Design (Mobile adjustments) --- */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 20px 40px;
+    }
+    .main-title {
+        font-size: 55px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hides nav links on smaller screens for simplicity */
+    }
+    .navbar {
+        justify-content: center;
+    }
+    .main-title {
+        font-size: 40px;
+    }
+    .description br {
+        display: none; /* Allows text to wrap naturally on mobile */
+    }
+    .description {
+        font-size: 13px;
+    }
+}
+/* --- Features Section --- */
+.features-section {
+    padding: 100px 20px;
+    background-color: #ffffff;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.feature-card {
+    flex: 1; /* Makes all three columns equal width */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Left aligns content like the image */
+}
+
+/* Icon Styling */
+.icon-wrapper {
+    margin-bottom: 20px;
+    height: 50px; /* Fixed height so text aligns evenly even if icons differ in size */
+    display: flex;
+    align-items: flex-end;
+}
+
+.icon-wrapper i {
+    font-size: 45px;
+    color: #2c2c2c; /* Dark gray/black color */
+}
+
+/* Note: To use your custom image icons instead of FontAwesome, 
+   delete the <i> tag in HTML, insert <img src="path-to-icon.png">, 
+   and use this CSS:
+   .icon-wrapper img { height: 100%; width: auto; object-fit: contain; } 
+*/
+
+.feature-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.feature-text {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #777777; /* Light gray text */
+}
+
+/* --- Responsive Design for Features --- */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .feature-card {
+        text-align: center;
+        align-items: center; /* Center content on mobile */
+    }
+    
+    .icon-wrapper {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* --- Section Heading --- */
+.section-heading {
+    width: 100%;
+    padding: 100px 20px 40px 20px; /* Generous top padding, less bottom padding to sit above features */
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    /* border: solid; */
+    height: 200px;
+    
+}
+
+.heading-container {
+    max-width: 800px;
+}
+
+.heading-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #1a1a1a; /* Very dark gray / almost black */
+    margin-bottom: 15px;
+    /* Using a slightly rounder font feel, similar to the image */
+    letter-spacing: -0.5px;
+}
+
+.heading-subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    color: #888888; /* Light gray text */
+    letter-spacing: 0.5px;
+}
+
+/* --- Responsive Design for Heading --- */
+@media (max-width: 768px) {
+    .section-heading {
+        padding: 60px 20px 30px 20px;
+    }
+    
+    .heading-title {
+        font-size: 32px;
+    }
+    
+    .heading-subtitle {
+        font-size: 14px;
+    }
+}
+
+/* --- Services Cards Section --- */
+.services-section {
+    padding: 20px 20px 100px 20px; /* Less top padding since it follows the features section */
+    background-color: #ffffff;
+}
+
+.services-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Space between the cards */
+}
+
+.service-card {
+    flex: 1;
+    background-color: #fbfbfb; /* Very light gray background like the image */
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Optional hover effect to make it interactive */
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Image Container */
+.card-image {
+    width: 100%;
+    padding: 20px 20px 0 20px; /* Padding inside the card so the image doesn't touch the edges */
+}
+
+.card-image img {
+    width: 100%;
+    height: 200px; /* Fixed height so all images align perfectly */
+    object-fit: cover; /* Ensures image covers the area without squishing */
+    display: block;
+}
+
+/* Text Content Container */
+.card-content {
+    padding: 25px 20px 30px 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.card-text {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #777777;
+}
+
+/* --- Responsive Design for Service Cards --- */
+@media (max-width: 900px) {
+    .services-container {
+        flex-direction: column;
+    }
+    
+    .card-image img {
+        height: 250px; /* Make images taller on mobile since they are full width */
+    }
+}
+
+/* --- Portfolio Gallery Section --- */
+.portfolio-section {
+    width: 100%;
+    padding: 20px 20px 100px 20px; /* Top padding matches flow, large bottom padding */
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
+.portfolio-container {
+    max-width: 1140px; /* Matches the width of previous sections for alignment */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Creates the white space between the images */
+}
+
+.portfolio-item {
+    flex: 1; /* Makes all four images equal width */
+    overflow: hidden;
+    border-radius: 4px; /* Slight rounding on corners */
+    /* Smooth transition for the hover effects */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 350px; /* Set a fixed height so all images align perfectly */
+    object-fit: cover; /* Ensures images fill the space without stretching or squishing */
+    display: block;
+    /* Smooth transition specifically for the zoom effect */
+    transition: transform 0.6s ease; 
+}
+
+/* --- Hover Effects --- */
+
+/* 1. Lift the card up and add a shadow */
+.portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); 
+}
+
+/* 2. Zoom the image in slightly */
+.portfolio-item:hover img {
+    transform: scale(1.08); 
+}
+
+/* --- Responsive Design for Portfolio --- */
+@media (max-width: 900px) {
+    .portfolio-container {
+        flex-wrap: wrap; /* Allows images to drop to the next line */
+        justify-content: center;
+    }
+    
+    .portfolio-item {
+        /* Two images per row on tablet */
+        flex: 0 0 calc(50% - 10px); 
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .portfolio-item {
+        /* One image per row on mobile phones */
+        flex: 0 0 100%; 
+    }
+    
+    .portfolio-item img {
+        height: 250px; /* Slightly shorter images on mobile */
+    }
+}
+
+/* --- Statistics Counter Section --- */
+.stats-section {
+    width: 100%;
+    background-color: #f2b115; /* Vibrant golden yellow matching the image */
+    padding: 90px 20px; /* Generous top and bottom padding */
+    display: flex;
+    justify-content: center;
+}
+
+.stats-container {
+    max-width: 1140px; /* Matches previous sections for alignment */
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Evenly spaces the 5 items */
+    gap: 20px;
+    text-align: center;
+}
+
+.stat-box {
+    flex: 1; /* Ensures all boxes take up equal width */
+    /* Smooth transition for the hover effect */
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.stat-number {
+    font-size: 46px; /* Large, bold numbers */
+    font-weight: 800;
+    color: #181818; /* Very dark gray/black */
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+}
+
+.stat-label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333; /* Slightly lighter text for the label */
+    letter-spacing: 0.2px;
+}
+
+/* --- Hover Effect --- */
+/* Slightly scale up the number when hovering over its box */
+.stat-box:hover {
+    transform: translateY(-4px);
+}
+
+.stat-box:hover .stat-number {
+    color: #000000;
+}
+
+/* --- Responsive Design for Stats --- */
+@media (max-width: 900px) {
+    .stats-container {
+        flex-wrap: wrap; /* Allows boxes to drop to the next line */
+        gap: 40px; /* Increases vertical gap when they wrap */
+    }
+    
+    .stat-box {
+        /* Two boxes per row on tablet */
+        flex: 0 0 calc(50% - 20px); 
+    }
+    
+    /* Make the last item take full width if there's an odd number */
+    .stat-box:last-child {
+        flex: 0 0 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .stats-section {
+        padding: 60px 20px;
+    }
+    
+    .stat-box {
+        /* One box per row on mobile phones */
+        flex: 0 0 100%; 
+    }
+    
+    .stat-number {
+        font-size: 38px;
+    }
+}
+.section-heading {
+    width: 100%;
+    padding: 100px 20px 40px 20px; /* The 100px top padding creates the white space */
+    /* ... rest of the CSS ... */
+}
+
+/* --- Features Grid Section --- */
+.features-grid-section {
+    width: 100%;
+    padding: 20px 20px 100px 20px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
+.grid-container {
+    max-width: 1140px; /* Matches previous sections */
+    width: 100%;
+    display: grid;
+    /* Creates 3 equal columns */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; /* Space between cards */
+}
+
+.grid-card {
+    background-color: #f8f9fa; /* Very light gray background */
+    padding: 40px 35px;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: default;
+}
+
+/* Optional hover effect to make the cards feel interactive */
+.grid-card:hover {
+    background-color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* SVG Icon Styling */
+.card-header svg {
+    width: 22px;
+    height: 22px;
+    color: #1a1a1a; /* Dark icon color */
+}
+
+.card-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.2px;
+}
+
+.grid-card p {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #777777;
+}
+
+/* --- Responsive Design for Grid --- */
+@media (max-width: 992px) {
+    .grid-container {
+        /* Switch to 2 columns on tablets */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        /* Switch to 1 column on mobile phones */
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+    
+    .grid-card {
+        padding: 30px 25px;
+    }
+}
